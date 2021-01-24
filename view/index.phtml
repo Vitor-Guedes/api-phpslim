@@ -1,0 +1,82 @@
+<style> 
+    * {
+        font-size: 1rem;
+    }
+
+    .success {
+        color: green;
+    }
+
+    .fail {
+        color: red;
+    }
+
+</style>
+
+<div id="list">
+    <input type="text" name="list-name" id="list-name" placeholder="Nome da Lista">
+    <button id="export"> Exportar </button>
+</div>
+<br>
+<div id="result">
+    <ul>
+    </ul>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    var doc = document;
+    var baseUrl = "http://localhost/";
+
+    function ini() {
+        axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+        let btn = doc.getElementById('export');
+        btn.addEventListener('click', exportTo);
+    }
+
+    function exportTo () {
+        let listName = doc.getElementById('list-name').value;
+        let list = getList(listName);
+
+        list.then(res => {
+            let data = res.data;
+            let result = doc.getElementById('result');
+            let ul = result.querySelector('ul');
+
+            ul.innerHTML = '';
+            
+            data.forEach(customer => {
+                store = storeCustomer(customer);
+
+                let li = doc.createElement('li');
+                li.innerText = customer.nome;
+
+                store.then(res => {
+                    console.log(res);
+                    addInList(ul, li, 'success');
+                });
+
+                store.catch(res => {
+                    addInList(ul, li, 'fail');
+                });
+            });
+        });
+    }
+
+    function storeCustomer (customer) {
+        return axios.post(baseUrl + "api/customers", customer);
+    } 
+
+    async function getList(listName) {
+        return axios.get(baseUrl + listName);
+    }
+
+    function addInList (ul, li, type) {
+        li.setAttribute('class', type);
+        ul.appendChild(li);
+    };
+
+   doc.addEventListener('DOMContentLoaded', ini);
+</script>

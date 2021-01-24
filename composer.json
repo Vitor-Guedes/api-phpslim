@@ -1,0 +1,30 @@
+{
+    "authors": [
+        {
+            "name": "Vitor Guedes",
+            "email": "vtrf2.0@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "description": "Api para consumo de alguns dados, apenas para estudo e crescimento pessoal.",
+    "license": "MIT",
+    "keywords": [
+        "PHP Slim",
+        "API",
+        "Eloquent",
+        "Autodidata"
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.3",
+        "php-di/php-di": "^6.3",
+        "illuminate/database": "^6.19"
+    },
+    "version": "1.0.0-dev",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Api\\": "src/"
+        }
+    }
+}
