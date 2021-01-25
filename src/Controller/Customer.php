@@ -125,7 +125,7 @@ class Customer
 
     protected function handleException($e, $response)
     {
-        $httpCode = 500;
+        $httpCode = $e->getCode() < 400 ? 500 : $e->getCode();
         $payload = [
             'Error' => $e->getMessage(),
             'Error-Code' => $e->getCode()
@@ -136,6 +136,12 @@ class Customer
                 'Error:' => 'Email ja esta sendo usado.'
             ];
             $httpCode = 409;
+        }
+
+        if ($e->getCode() == '42S22') {
+            $payload = [
+                'Error:' => 'Um dos campos, não pode ser encontrado.'  
+            ];
         }
 
         $payload = json_encode($payload);

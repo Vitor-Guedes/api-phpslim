@@ -44,6 +44,9 @@ class Clause
 
     public function fields($value)
     {
+        if (!is_array($value)) {
+            throw new \Exception('Parametro não pode ser utilizado.', 400);
+        }
         $fields = current(array_keys($value));
         $fields = explode(",", $fields);
         $this->model = $this->getModel()->select($fields);
@@ -76,6 +79,9 @@ class Clause
 
     public function filter($value)
     {   
+        if (!is_array($value)) {
+            throw new \Exception('Parametro não pode ser utilizado.', 400);
+        }
         $filters = array_keys($value);
         foreach ($filters as $filter) {
             list($column, $op, $value) = explode(",", $filter);
@@ -113,4 +119,14 @@ class Clause
      * em valores a ser filtrados,
      * tentar user regex para identificar o comando e valor
      */
+
+     /**
+      * @todo:
+      * Limitar apensa para endpoint que retorna todos os clientes
+      */
+
+      /**
+       * @todo:
+       * Trarar os erros de parametros na url get
+       */
 }
