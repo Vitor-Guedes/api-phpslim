@@ -211,3 +211,39 @@ curl -X DELETE -H 'Content-Type: application/json' -i http://localhost/api/custo
   "success": true
 }
 ```
+
+## Parametros - GET
+## Limit - Limita o retorno de registros
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?limit=3'
+```
+
+## Asc - Ordena o retorno em ordem crescente de acordo com o atributo
+``` 
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?asc=idade'
+```
+
+## Desc - Ordena o retorno em ordem decrescente de acordo com o atributo
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?desc=id'
+```
+
+## Limit & Page - Cria uma paginação
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?limit=10&page=3' 
+```
+
+## Fields
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?fields[id,nome,email,celular,telefone_fixo]'
+```
+
+## Filter - Filtra os retorno de acordo com os parametro passado [atributo, operador, valor]
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?filter[idade,>,25]'
+```
+
+## Find By - Filtra usando o atributo e valor passado
+```
+curl -X GET -H 'Content-Type: application/json' -i 'http://localhost/api/customers?cpf=703.246'
+```
