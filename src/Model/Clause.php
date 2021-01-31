@@ -124,9 +124,4 @@ class Clause
       * @todo:
       * Limitar apensa para endpoint que retorna todos os clientes
       */
-
-      /**
-       * @todo:
-       * Trarar os erros de parametros na url get
-       */
 }
