@@ -26,11 +26,11 @@ Requisições para a API devem seguir os padrões:
 ### Customer
 | Método | Rota | Descrição
 | --- | --- | --- |
-| GET | /api/customer | Lista todos clientes guardados na base |
-| GET | /api/customer/id | Retorna os dados de um unico cliente |
-| POST | /api/customer | Armazena um novo cliente |
-| PUT |  /api/customer/id | Atuaiza os attributos de um unico cliente |
-| DELETE |  /api/customer/id | Remove um determido cliente |
+| GET | /api/customers | Lista todos clientes guardados na base |
+| GET | /api/customers/id | Retorna os dados de um unico cliente |
+| POST | /api/customers | Armazena um novo cliente |
+| PUT |  /api/customers/id | Atuaiza os attributos de um unico cliente |
+| DELETE |  /api/customers/id | Remove um determido cliente |
 
 ## Como Usar - Customers
 
